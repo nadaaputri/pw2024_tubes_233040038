@@ -1,3 +1,19 @@
+<?php
+// koneksi ke database
+$db = mysqli_connect('localhost', 'root', '', 'pw2024_tubes_233040038');
+
+// ambil data dari tabel kategori / query data kategori
+$result = mysqli_query($db, "SELECT * FROM kategori");
+// ambil data (fetch) kategori dari object result
+$rows = [];
+while ($row = mysqli_fetch_assoc($result)) {
+    $rows[] = $row;
+};
+$kategori = $rows;
+
+
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -86,6 +102,31 @@
         </div>
     </section>
     <!-- Akhir about -->
+
+    <!-- Kategori -->
+    <section id="kategori" class="text-center pb-5">
+        <div class="container py-5">
+            <div class="row text-white">
+                <div class="col pb-5">
+                    <h1>Kategori Produk</h1>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <?php foreach ($kategori as $ktg) : ?>
+                    <div class="col m-5">
+                        <div class="card" style="width: 18rem;">
+                            <div class="card-body">
+                                <h5 class="card-title"><?= $ktg['nama']; ?></h5>
+                                <p class="card-text"><?= $ktg['detail']; ?></p>
+                                <a href="#" class="btn btn-secondary">Lihat selengkapnya</a>
+                            </div>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </section>
+    <!-- Akhir Kategori -->
 </body>
 
 </html>
