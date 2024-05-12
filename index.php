@@ -2,6 +2,7 @@
 // koneksi ke database
 $db = mysqli_connect('localhost', 'root', '', 'pw2024_tubes_233040038');
 
+
 // ambil data dari tabel kategori / query data kategori
 $result = mysqli_query($db, "SELECT * FROM kategori");
 // ambil data (fetch) kategori dari object result
@@ -11,6 +12,14 @@ while ($row = mysqli_fetch_assoc($result)) {
 };
 $kategori = $rows;
 
+// ambil data dari tabel produk
+$result2 = mysqli_query($db, "SELECT * FROM produk");
+// fetch data produk dari object $result2
+$rows2 = [];
+while ($row2 = mysqli_fetch_assoc($result2)) {
+    $rows2[] = $row2;
+};
+$produk = $rows2;
 
 ?>
 
@@ -90,10 +99,10 @@ $kategori = $rows;
                 </div>
             </div>
             <div class="row text-center fs-5 justify-content-center">
-                <div class="col-md-4 m-6">
+                <div class="col-md-4 m-5">
                     <img src="img/kopi2.jpg" class="img-fluid ">
                 </div>
-                <div class="col-md-4 ms-5 text-white">
+                <div class="col-md-4 m-5 text-white">
                     <p>NED Food menyediakan berbagai makanan dan minuman kekinian yang dijamin memiliki keunggulan tersendiri karena terbuat dari bahan-bahan premium, tetapi harga tetap terjangkau dan disukai oleh semua orang.
 
                     </p>
@@ -106,15 +115,16 @@ $kategori = $rows;
     <!-- Kategori -->
     <section id="kategori" class="text-center pb-5">
         <div class="container py-5">
-            <div class="row text-white">
-                <div class="col pb-5">
-                    <h1>Kategori Produk</h1>
+            <div class="row fs-5 text-white">
+                <div class="col justify-content-center text-center pb-5">
+                    <h1 class="mb-4">Kategori Produk</h1>
+                    <p class="kategori ">NED food tidak hanya menyediakan berbagai macam makanan, tetapi tersedia juga minuman dengan harga yang terjangkau.</p>
                 </div>
             </div>
             <div class="row justify-content-center">
                 <?php foreach ($kategori as $ktg) : ?>
                     <div class="col m-5">
-                        <div class="card" style="width: 18rem;">
+                        <div class="card" style="width: 18rem; height: 12rem;">
                             <div class="card-body">
                                 <h5 class="card-title"><?= $ktg['nama']; ?></h5>
                                 <p class="card-text"><?= $ktg['detail']; ?></p>
@@ -127,6 +137,36 @@ $kategori = $rows;
         </div>
     </section>
     <!-- Akhir Kategori -->
+
+    <!-- Produk -->
+    <section id="produk" class="text-center pb-5">
+        <div class="container">
+            <div class="row text-white">
+                <div class="col">
+                    <h1 class="mb-5">Produk</h1>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <?php foreach ($produk as $p) : ?>
+                    <div class="col mb-5">
+                        <div class="card" style="width: 18rem; height:42rem;">
+                            <img src="img/<?= $p['foto']; ?>" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h4 class="card-title"><?= $p['nama']; ?></h4>
+                                <p class="card-text"><?= $p['harga']; ?></p>
+                                <p><?= $p['detail']; ?></p>
+                            </div>
+                            <div class="card-body">
+                                <a href="#" class="card-link">ubah</a>
+                                <a href="#" class="card-link">hapus</a>
+                            </div>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </section>
+    <!-- Akhir Produk -->
 </body>
 
 </html>

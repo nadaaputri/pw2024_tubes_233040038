@@ -84,3 +84,13 @@ body {
 .about img {
 }
 /* Akhir about */
+
+/* kategori */
+p.kategori {
+  text-align: center;
+  max-width: 15rem;
+  margin: auto;
+  font-weight: 300;
+  line-height: 1.6;
+}
+/* akhir kategori */
