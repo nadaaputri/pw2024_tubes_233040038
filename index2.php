@@ -4,6 +4,11 @@ require 'functions.php';
 $kategori = query("SELECT * FROM kategori");
 $produk = query("SELECT * FROM produk");
 
+// tombol cari ditekan
+if (isset($_POST["cari"])) {
+    $produk = cari($_POST["keyword"]);
+}
+
 ?>
 
 <!doctype html>
@@ -54,9 +59,9 @@ $produk = query("SELECT * FROM produk");
                         <a class="nav-link fs-5">Contact</a>
                     </li>
                 </ul>
-                <form class="d-flex" role="search">
-                    <input class="form-control mx-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn1" type="submit">Search</button>
+                <form class="d-flex" role="search" method="post" action="">
+                    <input class="form-control me-2" type="search" name="keyword" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-secondary text-white" href="" type="submit" name="cari">Search</button>
                 </form>
             </div>
         </div>
@@ -101,7 +106,7 @@ $produk = query("SELECT * FROM produk");
             <div class="row fs-5 text-white">
                 <div class="col justify-content-center text-center pb-5">
                     <h1 class="mb-4">Kategori Produk</h1>
-                    <p class="kategori ">NED food tidak hanya menyediakan berbagai macam makanan, tetapi tersedia juga minuman dengan harga yang terjangkau.</p>
+                    <p class="kategori col-6 ">NED food tidak hanya menyediakan berbagai macam makanan, tetapi tersedia juga minuman dengan harga yang terjangkau.</p>
                 </div>
             </div>
             <div class="row justify-content-center">
@@ -127,22 +132,17 @@ $produk = query("SELECT * FROM produk");
             <div class="row text-white">
                 <div class="col">
                     <h1 class="mb-5 text-center">Produk</h1>
-                    <a href="tambah.php" class=" mb-3 btn btn-primary">Tambah Data Menu</a>
                 </div>
             </div>
             <div class="row justify-content-center">
                 <?php foreach ($produk as $p) : ?>
                     <div class="col mb-5">
-                        <div class="card" style="width: 18rem; height:42rem;">
+                        <div class="card" style="width: 18rem; height:35rem;">
                             <img src="img/<?= $p['foto']; ?>" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <h4 class="card-title"><?= $p['nama']; ?></h4>
                                 <p class="card-text"><?= $p['harga']; ?></p>
                                 <p><?= $p['detail']; ?></p>
-                            </div>
-                            <div class="card-body">
-                                <a href="#" class="badge text-bg-warning text-decoration-none">ubah</a>
-                                <a href="#" class="badge text-bg-danger text-decoration-none">hapus</a>
                             </div>
                         </div>
                     </div>

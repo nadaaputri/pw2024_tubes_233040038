@@ -1,4 +1,10 @@
 <?php
+session_start();
+
+if (!isset($_SESSION["login"])) {
+    header("Location: login.php");
+    exit;
+}
 require 'functions.php';
 
 $kategori = query("SELECT * FROM kategori");
@@ -43,15 +49,17 @@ if (isset($_POST["submit"])) {
     <div class="container  col-8">
         <h1>Ubah Data Produk</h1>
 
-        <form action="" method="POST">
+        <form action="" method="POST" enctype="multipart/form-data">
             <input type="hidden" name="id" value="<?= $p["id"]; ?>">
+            <input type="hidden" name="gambarLama" value="<?= $p["foto"]; ?>">
             <div class="mb-3">
                 <label for="kategori_id" class="form-label">ID Kategori</label>
                 <input type="text" class="form-control" id="kategori_id" name="kategori_id" required value="<?= $p["kategori_id"]; ?>">
             </div>
             <div class="mb-3">
-                <label for="foto" class="form-label">Foto</label>
-                <input type="file" class="form-control" id="foto" name="foto" required value="<?= $p["foto"]; ?>">
+                <label for="foto" class="form-label">Foto</label><br>
+                <img src="img/<?= $p['foto']; ?>" width="50"><br>
+                <input type="file" class="form-control" id="foto" name="foto">
             </div>
 
             <div class="mb-3">

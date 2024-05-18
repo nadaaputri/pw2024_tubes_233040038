@@ -1,4 +1,10 @@
 <?php
+session_start();
+
+if (!isset($_SESSION["login"])) {
+    header("Location: login.php");
+    exit;
+}
 require 'functions.php';
 
 $kategori = query("SELECT * FROM kategori");
@@ -61,7 +67,7 @@ if (isset($_POST["submit"])) {
     <div class="container  col-8">
         <h1>Tambah Data Produk</h1>
 
-        <form action="" method="POST">
+        <form action="" method="POST" enctype="multipart/form-data">
 
             <div class="mb-3">
                 <label for="kategori_id" class="form-label">ID Kategori</label>
