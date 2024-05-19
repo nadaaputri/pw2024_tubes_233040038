@@ -1,12 +1,28 @@
 <?php
+require 'functions.php';
 
 session_start();
+
+// cek cookie
+if (isset($_COOKIE['id']) && isset($_COOKIE['key'])) {
+    $id = $_COOKIE['id'];
+    $key = $_COOKIE['key'];
+    $conn = koneksiDB();
+
+    // ambil username berdasarkan id
+    $result = mysqli_query($conn, "SELECT username FROM user WHERE id = $id");
+    $row = mysqli_fetch_assoc($result);
+
+    // cek cookie dan username
+    if ($key === hash('sha256', $row['username'])) {
+        $_SESSION['login'] = true;
+    }
+}
 
 if (isset($_SESSION["login"])) {
     header("Location: admin.php");
     exit;
 }
-require 'functions.php';
 
 if (isset($_POST["login"])) {
     $username = $_POST["username"];
@@ -23,6 +39,13 @@ if (isset($_POST["login"])) {
             // set session
             $_SESSION["login"] = true;
 
+            // cek remember me
+            if (isset($_POST['remember'])) {
+                // buat cookie
+                setcookie('id', $row['id'], time() + 60);
+                setcookie('key', hash('sha256', $row['username']), time() + 60);
+            }
+
             header("Location: admin.php");
             exit;
         }
@@ -38,6 +61,7 @@ if (isset($_POST["login"])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Halaman Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <style>
         body {
             text-align: center;
@@ -53,7 +77,7 @@ if (isset($_POST["login"])) {
             padding: 5px;
         }
 
-        label {
+        .label {
             display: block;
         }
 
@@ -76,17 +100,22 @@ if (isset($_POST["login"])) {
     <img src="img/logo.png" alt="">
     <form action="" method="post">
         <div class="input">
-            <label for="username">username :</label>
+            <label for="username" class="label">Username :</label>
             <input type="text" name="username" id="username">
         </div>
         <div class="input">
-            <label for="password">password :</label>
+            <label for="password" class="label">Password :</label>
             <input type="password" name="password" id="password">
         </div>
         <div class="input">
-            <button type="submit" name="login">Login</button>
+            <label for="remember">Remember me</label>
+            <input type="checkbox" name="remember" id="remember">
+        </div>
+        <div class="input">
+            <button type="submit" name="login" class="btn btn-secondary">Login</button>
         </div>
     </form>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 
 </html>

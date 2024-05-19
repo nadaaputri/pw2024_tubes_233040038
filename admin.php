@@ -17,7 +17,8 @@ if (!isset($_SESSION["login"])) {
 </head>
 
 <body class="bg-dark">
-    <button type="button" class="btn btn-danger m-4" href="logout.php">Logout</button>
+    <a href="logout.php" class="btn btn-danger m-4">Logout</a>
+
     <h1 class="text-center m-5 text-white">Halaman Admin</h1>
     <div class="row justify-content-center m-4">
         <div class="card w-50 justify-content-center text-bg-light border-secondary">
