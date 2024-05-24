@@ -1,7 +1,7 @@
 :root {
   --background: #181818;
-  --hero: rgba(24, 24, 24, 1);
-  --hero-gradient: rgba(225, 225, 225, 0);
+  --hero: rgba(243, 243, 243, 1);
+  --hero-gradient: rgba(230, 230, 230, 0);
 }
 
 * {
@@ -11,12 +11,20 @@
 
 body {
   font-family: "Poppins", sans-serif;
-  background-color: var(--background);
+  background-color: wheat;
+  color: #292828;
 }
 
 /* Navbar */
 .navbar-brand img {
   height: 70px;
+}
+
+.navbar .navbar-collapse ul li {
+  color: #373636;
+}
+.navbar .navbar-collapse ul li:hover {
+  color: #a37649;
 }
 /* Akhir navbar */
 
@@ -39,7 +47,6 @@ body {
   width: 100%;
   height: 30%;
   bottom: 0;
-  background: linear-gradient(0deg, var(--hero) 8%, var(--hero-gradient) 50%);
 }
 
 .hero .content {
@@ -81,7 +88,25 @@ body {
 /* Akhir Hero */
 
 /* About */
-.about img {
+.about,
+.kategori,
+.produk,
+.contact {
+  padding-top: 5rem;
+}
+
+.about h1,
+.kategori h1,
+.contact h1,
+.produk h1 {
+  font-size: 2.6rem;
+  font-weight: 600;
+}
+.about h1 span,
+.kategori h1 span,
+.contact h1 span,
+.produk h1 span {
+  color: #c4803d;
 }
 /* Akhir about */
 
@@ -93,4 +118,60 @@ p.kategori {
   font-weight: 300;
   line-height: 1.6;
 }
+
 /* akhir kategori */
+
+/* contact */
+.contact .row {
+  display: flex;
+  margin-top: 2rem;
+}
+
+.contact a {
+  text-decoration: none;
+  color: #292828;
+}
+/* Akhir contact */
+
+/* Footer */
+footer {
+  background-color: #a37649;
+  text-align: center;
+  padding: 1 rem 0;
+  margin-top: 3rem;
+  bottom: 0;
+}
+
+footer .social {
+  padding: 1rem 0;
+}
+
+footer .social a {
+  color: #fff;
+  margin: 1rem;
+}
+
+footer .social a:hover,
+footer .links a:hover {
+  color: #e1dcdc;
+}
+
+footer .links {
+  margin-bottom: 1.4rem;
+}
+
+footer .links a {
+  color: #fff;
+  padding: 0.7rem 1rem;
+}
+
+footer .credit {
+  font-size: 0.8rem;
+}
+
+footer .credit a {
+  color: #ffff;
+  text-decoration: none;
+  font-weight: 500;
+}
+/* Akhir Footer */

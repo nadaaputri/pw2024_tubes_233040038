@@ -21,14 +21,14 @@ if (isset($_POST["submit"])) {
         echo "
             <script>
                 alert('Data produk berhasil diubah');
-                document.location.href = 'index.php';
+                document.location.href = 'produk.php';
             </script>
         ";
     } else {
         echo "
             <script>
                 alert('Data produk gagal diubah');
-                document.location.href = 'index.php';
+                document.location.href = 'produk.php';
             </script>
         ";
     }

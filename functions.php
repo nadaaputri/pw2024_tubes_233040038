@@ -19,21 +19,6 @@ function query($sql)
 
 
 
-function tambahK($dataK)
-{
-    $conn = koneksiDB();
-
-    $nama = htmlspecialchars($dataK["nama"]);
-    $detail = htmlspecialchars($dataK["detail"]);
-
-    $query = "INSERT INTO kategori
-                VALUES
-                (NULL, '$nama', '$detail')
-            ";
-    mysqli_query($conn, $query);
-
-    return mysqli_affected_rows($conn);
-}
 
 function tambahP($dataP)
 {
@@ -104,13 +89,6 @@ function upload()
 
 
 
-function hapusK($id)
-{
-    $conn = koneksiDB();
-    mysqli_query($conn, "DELETE FROM kategori WHERE id = $id");
-    return mysqli_affected_rows($conn);
-}
-
 function hapusP($id)
 {
     $conn = koneksiDB();
@@ -120,23 +98,6 @@ function hapusP($id)
 
 
 
-function ubahK($dataK)
-{
-    $conn = koneksiDB();
-
-    $id = $dataK["id"];
-    $nama = htmlspecialchars($dataK["nama"]);
-    $detail = htmlspecialchars($dataK["detail"]);
-
-    $query = "UPDATE kategori SET
-                nama = '$nama',
-                detail = '$detail'
-                WHERE id = $id;
-            ";
-    mysqli_query($conn, $query);
-
-    return mysqli_affected_rows($conn);
-}
 
 function ubahP($dataP)
 {
