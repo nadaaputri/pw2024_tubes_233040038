@@ -125,7 +125,7 @@ if (isset($_POST["cari"])) {
                         <div class="card-body">
                             <h4 class="card-title">Makanan</h4>
                             <p class="card-text m-3">Tersedia berbagai macam makanan yang dibuat menggunakan bahan-bahan premium dengan harga yang terjangkau.</p>
-                            <a href="#" class="btn btn-outline-dark mb-3">Lihat selengkapnya</a>
+                            <a href="makanan.php" class="btn btn-outline-dark mb-3">Lihat selengkapnya</a>
                         </div>
                     </div>
                 </div>
@@ -134,7 +134,7 @@ if (isset($_POST["cari"])) {
                         <div class="card-body m-3">
                             <h4 class="card-title">Minuman</h4>
                             <p class="card-text m-3">Tersedia minuman segar dengan harga yang terjangkau.</p>
-                            <a href="#" class="btn btn-outline-dark">Lihat selengkapnya</a>
+                            <a href="minuman.php" class="btn btn-outline-dark">Lihat selengkapnya</a>
                         </div>
                     </div>
                 </div>
