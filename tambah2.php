@@ -7,8 +7,10 @@ if (!isset($_SESSION["login"])) {
 }
 require 'functions.php';
 
-
-$query = query("SELECT a.*, b.nama AS nama_kategori FROM produk a JOIN kategori b ON a.kategori_id=b.id");
+$conn = koneksiDB();
+$query = mysqli_query($conn, "SELECT a.*, b.nama AS nama_kategori FROM produk a JOIN kategori b ON a.kategori_id=b.id");
+$data = mysqli_fetch_array($query);
+// $kategori = mysqli_query($conn, "SELECT * FROM kategori WHERE id!=$data[kategori_id]");
 $kategori = query("SELECT * FROM kategori");
 
 
@@ -72,18 +74,8 @@ if (isset($_POST["submit"])) {
         <form action="" method="POST" enctype="multipart/form-data">
 
             <div class="mb-3">
-                <label for="kategori" class="form-label">ID Kategori</label>
-                <select name="kategori" id="kategori" class="form-control">
-                    <option value="">Pilih satu</option>
-                    <?php
-                    while ($data = mysqli_fetch_array($query)) {
-                    ?>
-                        <option value="<?= $data['id'] ?>"><?= $data['nama']; ?></option>
-                    <?php
-                    }
-                    ?>
-                </select>
-                <!-- <input type="text" class="form-control" id="kategori_id" name="kategori_id" required> -->
+                <label for="kategori" class="form-label">Kategori</label>
+                <input type="text" class="form-control" id="kategori_id" name="kategori_id" required>
             </div>
             <div class="mb-3">
                 <label for="foto" class="form-label">Foto</label>

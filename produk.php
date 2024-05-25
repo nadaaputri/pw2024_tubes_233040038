@@ -9,7 +9,7 @@ if (!isset($_SESSION["login"])) {
 require 'functions.php';
 $conn = koneksiDB();
 
-$produk = query("SELECT * FROM produk");
+$produk = query("SELECT a.*, b.nama AS nama_kategori FROM produk a JOIN kategori b ON a.kategori_id=b.id");
 $kategori = query("SELECT * FROM kategori");
 
 // tombol cari ditekan
@@ -33,8 +33,7 @@ if (isset($_POST["cari"])) {
 
             .navbar,
             .tambah,
-            .aksi,
-            .pagination {
+            .aksi {
                 display: none;
             }
         }
@@ -84,7 +83,7 @@ if (isset($_POST["cari"])) {
             <thead>
                 <tr>
                     <th scope="col">No</th>
-                    <th scope="col">ID Kategori</th>
+                    <th scope="col">Kategori</th>
                     <th scope="col">Foto</th>
                     <th scope="col">Nama</th>
                     <th scope="col">Harga</th>
@@ -98,7 +97,7 @@ if (isset($_POST["cari"])) {
                 <?php foreach ($produk as $p) : ?>
                     <tr>
                         <th scope="row"><?= $i++; ?></th>
-                        <td><?= $p['kategori_id']; ?></td>
+                        <td><?= $p['nama_kategori']; ?></td>
                         <td><img src="img/<?= $p['foto']; ?>" alt="" class="img-fluid" style="width:100px;"></td>
                         <td><?= $p['nama']; ?></td>
                         <td><?= $p['harga']; ?></td>
