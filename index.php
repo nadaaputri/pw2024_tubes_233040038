@@ -176,10 +176,10 @@ if (isset($_POST["cari"])) {
             <div class="row fs-5 justify-content-center">
                 <div class="col-6">
                     <p class="text-center mb-4">Untuk pemesanan produk dan info lebih lanjut dapat menghubungi kontak dibawah ini.</p>
-                    <a href="https://wa.me/qr/BG7QSJ5ZPXLAD1" class="mb-5"><i class=" bi bi-whatsapp"></i> 0895351475238</a>
+                    <a href="https://wa.me/qr/BG7QSJ5ZPXLAD1" class="mb-5" target="_blank"><i class=" bi bi-whatsapp"></i> 0895351475238</a>
                     <p>Sosial media lainnya:</p>
-                    <a href="https://www.instagram.com/roti_kd_anekarasa/"><i class="bi bi-instagram"></i> @roti_kd_anekarasa</a><br>
-                    <a href="https://youtube.com/@ned_tv?si=Gx6-uylJbWvHJkpz"><i class="bi bi-youtube"></i> @Ned_Tv</a>
+                    <a href="https://www.instagram.com/roti_kd_anekarasa/" target="_blank"><i class="bi bi-instagram"></i> @roti_kd_anekarasa</a><br>
+                    <a href="https://youtube.com/@ned_tv?si=Gx6-uylJbWvHJkpz" target="_blank"><i class="bi bi-youtube"></i> @Ned_Tv</a>
                 </div>
             </div>
 
@@ -190,9 +190,9 @@ if (isset($_POST["cari"])) {
     <!-- Footer -->
     <footer>
         <div class="social">
-            <a href="https://wa.me/qr/BG7QSJ5ZPXLAD1"><i class=" bi bi-whatsapp"></i></a>
-            <a href="https://www.instagram.com/roti_kd_anekarasa/"><i class="bi bi-instagram"></i></a>
-            <a href="https://youtube.com/@ned_tv?si=Gx6-uylJbWvHJkpz"><i class="bi bi-youtube"></i></a>
+            <a href="https://wa.me/qr/BG7QSJ5ZPXLAD1" target="_blank"><i class=" bi bi-whatsapp"></i></a>
+            <a href="https://www.instagram.com/roti_kd_anekarasa/" target="_blank"><i class="bi bi-instagram"></i></a>
+            <a href="https://youtube.com/@ned_tv?si=Gx6-uylJbWvHJkpz" target="_blank"><i class="bi bi-youtube"></i></a>
         </div>
 
         <div class="links">
@@ -204,7 +204,7 @@ if (isset($_POST["cari"])) {
         </div>
 
         <div class="credit">
-            <p>Created by <a href="https://www.instagram.com/nadaaptri_/">NadaaPutri</a>. | &copy; 2024.</p>
+            <p>Created by <a href="https://www.instagram.com/nadaaptri_/" target="_blank">NadaaPutri</a>. | &copy; 2024.</p>
         </div>
     </footer>
     <!-- Akhir Footer -->

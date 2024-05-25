@@ -8,16 +8,8 @@ if (!isset($_SESSION["login"])) {
 
 require 'functions.php';
 $conn = koneksiDB();
-// pagination
-// konfigurasi
-$jumlahDataPerHalaman = 3;
-$jumlahData = count(query("SELECT * FROM produk"));
-$jumlahHalaman = ceil($jumlahData / $jumlahDataPerHalaman);
-$halamanAktif = (isset($_GET["halaman"])) ? $_GET["halaman"] : 1;
-$awalData = ($jumlahDataPerHalaman * $halamanAktif) - $jumlahDataPerHalaman;
 
-
-$produk = query("SELECT * FROM produk LIMIT $awalData, $jumlahDataPerHalaman");
+$produk = query("SELECT * FROM produk");
 $kategori = query("SELECT * FROM kategori");
 
 // tombol cari ditekan
@@ -36,6 +28,17 @@ if (isset($_POST["cari"])) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <!-- my css -->
     <link rel="stylesheet" href="css/style.css">
+    <style>
+        @media print {
+
+            .navbar,
+            .tambah,
+            .aksi,
+            .pagination {
+                display: none;
+            }
+        }
+    </style>
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -54,10 +57,10 @@ if (isset($_POST["cari"])) {
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link fs-5" href="index.php">Halaman user</a>
+                        <a class="nav-link fs-5" href="index.php" target="_blank">Halaman user</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fs-5" href="#">Pdf reporting</a>
+                        <a class="nav-link fs-5" href="cetak.php" target="_blank">Cetak</a>
                     </li>
                 </ul>
                 <form class="d-flex" role="search" method="post" action="">
@@ -74,8 +77,8 @@ if (isset($_POST["cari"])) {
     </nav>
     <!-- Akhir Navbar -->
 
-    <h1 class="text-center mt-5 produk">Produk NED Food</h1>
-    <a href="tambah2.php" class="btn btn-secondary  ms-5">Tambah Produk</a>
+    <h1 class="text-center mt-5 produk" style="font-weight:600;">Produk NED Food</h1>
+    <a href="tambah2.php" class="btn btn-secondary tambah ms-5">Tambah Produk</a>
     <div id="container">
         <table class="table table-bordered m-4">
             <thead>
@@ -86,12 +89,12 @@ if (isset($_POST["cari"])) {
                     <th scope="col">Nama</th>
                     <th scope="col">Harga</th>
                     <th scope="col">Detail</th>
-                    <th scope="col">Aksi</th>
+                    <th scope="col" class="aksi">Aksi</th>
 
                 </tr>
             </thead>
             <tbody>
-                <?php $i = $awalData + 1; ?>
+                <?php $i = 1; ?>
                 <?php foreach ($produk as $p) : ?>
                     <tr>
                         <th scope="row"><?= $i++; ?></th>
@@ -100,7 +103,7 @@ if (isset($_POST["cari"])) {
                         <td><?= $p['nama']; ?></td>
                         <td><?= $p['harga']; ?></td>
                         <td><?= $p['detail']; ?></td>
-                        <td>
+                        <td class="aksi">
                             <a href="ubahP.php?id=<?= $p['id']; ?>" class="badge text-bg-warning text-decoration-none">ubah</a>
                             <a href="hapusP.php?id=<?= $p['id']; ?>" onclick="return confirm('Data akan dihapus?');" class="badge text-bg-danger text-decoration-none">hapus</a>
                         </td>
@@ -110,26 +113,6 @@ if (isset($_POST["cari"])) {
         </table>
     </div>
 
-    <!-- navigasi pagination -->
-
-    <div class="text-center ">
-        <?php if ($halamanAktif > 1) : ?>
-            <a href="?halaman=<?= $halamanAktif - 1; ?>" class="ms-5">&laquo;</a>
-        <?php endif; ?>
-
-        <?php for ($i = 1; $i <= $jumlahHalaman; $i++) : ?>
-            <?php if ($i == $halamanAktif) : ?>
-                <a href="?halaman=<?= $i; ?>" style=""><?= $i; ?></a>
-            <?php else : ?>
-                <a href="?halaman=<?= $i; ?>" class="text-center text-dark justify-content-center"><?= $i; ?></a>
-            <?php endif; ?>
-        <?php endfor; ?>
-
-        <?php if ($halamanAktif < $jumlahHalaman) : ?>
-            <a href="?halaman=<?= $halamanAktif + 1; ?>">&raquo;;</a>
-        <?php endif; ?>
-    </div>
-    <!-- Akhhir navigasi pagination -->
 
     <!-- my javascript -->
     <script src="js/script.js"></script>
