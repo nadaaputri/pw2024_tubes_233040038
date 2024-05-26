@@ -62,11 +62,11 @@ if (isset($_POST["cari"])) {
                         <a class="nav-link fs-5" href="cetak.php" target="_blank">Cetak</a>
                     </li>
                 </ul>
-                <form class="d-flex" role="search" method="post" action="">
+                <form class="d-flex mb-2" role="search" method="post" action="">
                     <input class="form-control me-2" type="text" name="keyword" placeholder="Search" aria-label="Search" autocomplete="off" id="keyword">
                     <button class="btn btn-outline-dark text-white me-3" type="submit" name="cari" id="tombol-cari">Search</button>
                 </form>
-                <ul class="navbar-nav mb-2 mb-lg-0">
+                <ul class="navbar-nav mb-2">
                     <li class="nav-item">
                         <a class="btn btn-dark" aria-current="page" href="logout.php">Logout</a>
                     </li>
