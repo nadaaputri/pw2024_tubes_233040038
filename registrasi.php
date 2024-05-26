@@ -37,7 +37,7 @@ if (isset($_POST["register"])) {
 
         h1 {
             font-family: "Poppins", sans-serif;
-
+            font-weight: 600;
         }
 
         .input input {
@@ -58,7 +58,7 @@ if (isset($_POST["register"])) {
 </head>
 
 <body>
-    <h1 class="m-5">Registrasi account</h1>
+    <h1 class="m-5">Registrasi admin</h1>
     <img src="img/logo.png" alt="">
 
     <form action="" method="post">
