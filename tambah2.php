@@ -77,7 +77,6 @@ if (isset($_POST["submit"])) {
                     <option value="1">Makanan</option>
                     <option value="2">Minuman</option>
                 </select>
-
             </div>
             <div class="mb-3">
                 <label for="foto" class="form-label">Foto</label>

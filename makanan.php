@@ -40,6 +40,12 @@ $produk = query("SELECT * FROM produk WHERE kategori_id=1");
                     <li class="nav-item">
                         <a class="nav-link fs-5" href="index.php">Home</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link fs-5" aria-current="page" href="index.php#kategori">Kategori</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fs-5" aria-current="page" href="index.php#contact">Contact</a>
+                    </li>
                 </ul>
                 <form class="d-flex" role="search" method="post" action="">
                     <input class="form-control me-2" type="text" name="keyword" placeholder="Search" aria-label="Search" autocomplete="off" id="keyword">
@@ -52,12 +58,12 @@ $produk = query("SELECT * FROM produk WHERE kategori_id=1");
 
     <!-- Produk -->
     <section id="produk" class=" pt-5">
-        <div class="container" id="container">
-            <div class="row produk">
-                <div class="col">
-                    <h1 class="mb-5 text-center">Kategori <span> Makanan</span></h1>
-                </div>
+        <div class="row produk">
+            <div class="col">
+                <h1 class="mb-5 text-center">Kategori <span> Makanan</span></h1>
             </div>
+        </div>
+        <div class="container" id="container">
             <div class="row justify-content-center">
                 <?php foreach ($produk as $p) : ?>
                     <div class="col mb-5">
@@ -77,6 +83,29 @@ $produk = query("SELECT * FROM produk WHERE kategori_id=1");
     <!-- Akhir Produk -->
 
     <!-- My js -->
-    <script src="js/script3.js"></script>
+    <script>
+        var keyword = document.getElementById("keyword");
+        var tombolCari = document.getElementById("tombol-cari");
+        var container = document.getElementById("container");
+
+        // tambahkan event ketika keyword ditulis
+        keyword.addEventListener("keyup", function() {
+            console.log(keyword.value);
+            // buat object ajax
+            var xhr = new XMLHttpRequest();
+
+            // cek kesiapan ajax
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    container.innerHTML = xhr.responseText;
+                }
+            };
+
+            // eksekusi ajax
+            xhr.open("GET", "ajax/makanan.php?keyword=" + keyword.value, true);
+            xhr.send();
+        });
+    </script>
+    <!-- <script src="js/script3.js"></script> -->
 
 </body>

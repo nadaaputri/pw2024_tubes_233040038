@@ -1,3 +1,4 @@
+alert("ok");
 // ambil elemen2 yang dibutuhkan
 var keyword = document.getElementById("keyword");
 var tombolCari = document.getElementById("tombol-cari");
@@ -5,6 +6,7 @@ var container = document.getElementById("container");
 
 // tambahkan event ketika keyword ditulis
 keyword.addEventListener("keyup", function () {
+  console.log(keyword.value);
   // buat object ajax
   var xhr = new XMLHttpRequest();
 

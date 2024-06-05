@@ -83,7 +83,7 @@ if (isset($_POST["cari"])) {
         <main class="content mb-5 ">
             <h1>NED <span>food</span></h1>
             <p>Enak di mulut, Enteng di dompet</p>
-            <a href="#" class="cta">Beli Sekarang</a>
+            <a href="#contact" class="cta">Beli Sekarang</a>
         </main>
     </section>
     <!-- Akhir Hero -->

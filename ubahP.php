@@ -53,8 +53,11 @@ if (isset($_POST["submit"])) {
             <input type="hidden" name="id" value="<?= $p["id"]; ?>">
             <input type="hidden" name="gambarLama" value="<?= $p["foto"]; ?>">
             <div class="mb-3">
-                <label for="kategori_id" class="form-label">ID Kategori</label>
-                <input type="text" class="form-control" id="kategori_id" name="kategori_id" required value="<?= $p["kategori_id"]; ?>">
+                <label for="kategori_id" class="form-label">Pilih Kategori</label>
+                <select name="kategori_id" id="kategori_id" class="form-control">
+                    <option value="1">Makanan</option>
+                    <option value="2">Minuman</option>
+                </select>
             </div>
             <div class="mb-3">
                 <label for="foto" class="form-label">Foto</label><br>

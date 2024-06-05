@@ -40,6 +40,12 @@ $produk = query("SELECT * FROM produk WHERE kategori_id=2");
                     <li class="nav-item">
                         <a class="nav-link fs-5" href="index.php">Home</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link fs-5" aria-current="page" href="index.php#kategori">Kategori</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fs-5" aria-current="page" href="index.php#contact">Contact</a>
+                    </li>
                 </ul>
                 <form class="d-flex" role="search" method="post" action="">
                     <input class="form-control me-2" type="text" name="keyword" placeholder="Search" aria-label="Search" autocomplete="off" id="keyword">

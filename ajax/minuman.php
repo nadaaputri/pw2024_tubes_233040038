@@ -4,10 +4,10 @@ $keyword = $_GET["keyword"];
 
 $query =  "SELECT * FROM produk 
                 WHERE
-        kategori_id=2 OR
         nama LIKE '%$keyword%' OR
         harga LIKE '%$keyword%' OR
-        detail LIKE '%$keyword%' 
+        detail LIKE '%$keyword%' AND
+        kategori_id=2 
         ";
 $produk = query($query);
 
