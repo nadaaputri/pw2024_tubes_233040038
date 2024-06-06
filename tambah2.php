@@ -45,27 +45,7 @@ if (isset($_POST["submit"])) {
 </head>
 
 <body>
-    <div class="container mb-5">
-        <h3>Id Kategori</h3>
 
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th scope="col">Id</th>
-                    <th scope="col">Nama</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php $i = 1; ?>
-                <?php foreach ($kategori as $ktg) : ?>
-                    <tr>
-                        <td><?= $ktg['id']; ?></td>
-                        <td><?= $ktg['nama']; ?></td>
-                    </tr>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
-    </div>
     <div class="container  col-8">
         <h1>Tambah Data Produk</h1>
 
