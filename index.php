@@ -119,8 +119,8 @@ if (isset($_POST["cari"])) {
                     <p class="kategori col-6 ">NED food tidak hanya menyediakan berbagai macam makanan, tetapi tersedia juga minuman dengan harga yang terjangkau.</p>
                 </div>
             </div>
-            <div class="row justify-content-center ">
-                <div class="col m-5">
+            <div class="row justify-content-center">
+                <div class="col-md-4 m-5">
                     <div class="card  " style="width: 18rem; height: 18rem; background-color:rgb(236, 197, 129);">
                         <div class="card-body">
                             <h4 class="card-title">Makanan</h4>
@@ -129,7 +129,7 @@ if (isset($_POST["cari"])) {
                         </div>
                     </div>
                 </div>
-                <div class="col m-5">
+                <div class="col-md-4 m-5">
                     <div class="card " style="width: 18rem; height: 18rem; background-color: rgb(236, 197, 129);">
                         <div class="card-body m-3">
                             <h4 class="card-title">Minuman</h4>
